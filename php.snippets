@@ -1,2 +1,18 @@
+snippet actionacl
+	public function ${1:action}Action()
+	{
+		// User must be allowed to view index
+		$allowed = $this->_helper->acl(
+			$this->_acl,
+			$this->_loggedInUser,
+			'${2:resource}',
+			'${3:privilege}'
+		);
+		if (!$allowed) {
+			return;
+		}
+
+		${4:// code...}
+	}
 snippet printr
 	echo '<pre>', print_r($${1:var}, true), '</pre>';
